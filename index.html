@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Obligatorio</title>
+</head>
+
+<body>
+
+
+
+    <div id="contenedor">
+        <div id="cabezal" class="clearfix">
+            <img id="logo" src="https://p1.develotion.com/2022_08/logo.png" alt="logo">
+            <ul id="navPrincipal">
+                <li id="btnSeccionRegistroImportador" class="btn invitado">
+                    <a>Registrar Importador</a>
+                </li>
+                <li id="btnSeccionIniciarSesion" class="btn invitado">
+                    <a>Iniciar sesion</a>
+                </li>
+                <li id="btnSeccionCerrarSesion" class="btn Empresa Importador ">
+                    <a>Cerrar Sesion</a>
+                </li>
+                <li id="btnSeccionCrearSolicitudDeCarga" class="btn Importador">
+                    <a>Crear nueva solicitud de carga</a>
+                </li>
+                <li id="btnSeccionListarSolicitudesDeCargaImportador" class="btn Importador ">
+                    <a>Mis cargas </a>
+                </li>
+                <li id="btnSeccionListarSolicitudesDeCargaEmpresa" class="btn Empresa ">
+                    <a>Cargas pendientes de viaje </a>
+                </li>
+                <li id="btnSeccionListarEstadisticas" class="btn Importador">
+                    <a>Listar estadisticas</a>
+                </li>
+                <li id="btnSeccionCrearViaje" class="btn Empresa">
+                    <a>Crear viaje de un buque</a>
+                </li>
+                <li id="btnSeccionRolloverDeCarga" class="btn Empresa">
+                    <a>Rollover de carga</a>
+                </li>
+                <li id="btnSeccionManifiestoDeCarga" class="btn Empresa">
+                    <a>Manifiesto de carga</a>
+                </li>
+                <li id="btnSeccionHabilitarImportadores" class="btn Empresa">
+                    <a>Habilitar importadores</a>
+                </li>
+                <li id="btnSeccionListarCargaPeligrosa" class="btn Empresa">
+                    <a>Carga peligrosa</a>
+                </li>
+
+            </ul>
+        </div><!-- FIN CABEZAL -->
+        <div id="contenido">
+            <!-- Registro importador -->
+            <div id="seccionRegistroImportador" class="seccion">
+                <h3>Registro importador</h3>
+                <label for="txtNombre">Nombre:</label>
+                <input type="text" id="txtNombre"><br>
+                <label for="txtNombreUsuario">Nombre de usuario:</label>
+                <input type="text" id="txtNombreUsuario"><br>
+                <label for="txtContraseña">Contraseña:</label>
+                <input type="password" id="txtContraseña"><br>
+
+                <label for="slcImagenes">Foto:</label>
+                <select id="slcImagenes"></select>
+                <br>
+                <input type="button" value="Registrarse" id="btnRegistrarse"><br>
+                <p id="pRegistro"></p>
+            </div>
+
+
+
+
+            <!-- Iniciar sesion General -->
+
+            <div id="seccionIniciarSesion" class="seccion">
+                <label for="slcTipoUsuario">Tipo de usuario</label>
+                <select id="slcTipoUsuario"></select><br>
+
+                <label for="txtUsuarioL">Usuario:</label>
+                <input type="text" id="txtUsuarioL"><br>
+
+                <label for="txtContraseñaL">Contraseña:</label>
+                <input type="password" id="txtContraseñaL"><br><br>
+
+                <input type="button" value="Iniciar sesion" id="btnIniciarSesion"><br><br>
+                <p id="pLogin"></p>
+
+
+            </div>
+
+            <div id="seccionCerrarSesion" class="seccion">
+                <input type="button" value="Cerrar Sesion" id="btnCerrarSesion"><br>
+            </div>
+
+            <!-- Crear solicitud de carga -->
+            <div id="seccionCrearSolicitudDeCarga" class="seccion">
+                <h3>Crear una solicitud de carga</h3>
+                <label for="slcTipoDeCarga">Seleccione un tipo de carga</label>
+                <select id="slcTipoDeCarga"></select><br>
+
+                <label for="txtDescripcionMercaderia">Descripcion de la mercaderia:</label>
+                <textarea id="txtDescripcionMercaderia"></textarea><br>
+
+                <label for="txtPuertoOrigen">Puerto de origen</label>
+                <input type="text" id="txtPuertoOrigen"><br>
+
+                <label for="txtCantidadContenedores">Cantidad de contenedores:</label>
+                <input type="number" id="txtCantidadContenedores"><br>
+
+                <input type="button" value="Crear solicitud de carga" id="btnSolicitudDeCarga">
+
+            </div>
+
+
+            <!-- Listar solicitudes de carga -->
+
+            <div id="seccionListarSolicitudesDeCargaImportador" class="seccion">
+                <h3>Consultar y Cancelar solicitudes pendientes</h3>
+                <label for="txtBusquedaPorDescripcion">Descripcion de la mercaderia(opcional):</label>
+                <textarea id="txtBusquedaPorDescripcion"></textarea><br>
+                <br>
+                <br>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo de mercaderia</th>
+                            <th>Descripcion de la mercaderia</th>
+                            <th>Puerto de origen</th>
+                            <th>Cantidad de contenedores</th>
+                            <th>ID Importador</th>
+                            <th>Estado carga</th>
+                            <th>Eliminar solicitud pendiente</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblDatos"></tbody>
+                </table>
+                <input type="button" value="Listar cargas pendientes" id="btnConsultarSolicitudDeCargaImportador">
+                <br>
+            </div>
+
+            <div id="seccionListarSolicitudesDeCargaEmpresa" class="seccion">
+                <h3>Consultar y Asignar viaje a cargas pendientes</h3>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo de mercaderia</th>
+                            <th>Descripcion de la mercaderia</th>
+                            <th>Puerto de origen</th>
+                            <th>Cantidad de contenedores</th>
+                            <th>ID Importador</th>
+                            <th>Estado carga</th>
+                            <th>Asignar viaje</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblDatosAsignar"></tbody>
+                </table>
+                <br>
+                <input type="button" value="Listar cargas pendientes" id="btnConsultarSolicitudDeCargaEmpresa">
+                <br>
+                <label for="slcViajes">Seleccione un viaje de un buque:</label>
+                <select id="slcViajes"></select><br>
+            </div>
+
+
+            <!-- Listar estadisticas -->
+            <div id="seccionListarEstadisticas" class="seccion">
+                <h3>Porcentaje de cancelacion del total de tus cargas</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Porcentaje de cancelaciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tblEstadisticas1"></tbody>
+                </table>
+
+                <h3>Proximas llegadas</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID carga</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblEstadisticas2"></tbody>
+                </table>
+
+                <h3>Porcentaje de participacion de las lineas de carga, en tus cargas confirmadas</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Linea de carga</th>
+                            <th>Porcentaje:</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblEstadisticas3"></tbody>
+                </table>
+            </div>
+
+            <!-- Crear viaje -->
+
+            <div id="seccionCrearViaje" class="seccion">
+                <h3>Crear el viaje de un buque</h3>
+                <label for="txtNombreBuque">Nombre del buque</label>
+                <input type="text" id="txtNombreBuque"><br>
+
+                <label for="txtCantidadMaximaContenedores">Cantidad maxima de contenedores:</label>
+                <input type="number" id="txtCantidadMaximaContenedores"><br>
+
+                <label for="txtFechaLlegada">Fecha de llegada:</label>
+                <input type="date" id="txtFechaLlegada"><br>
+
+                <input type="button" value="Crear viaje" id="btnCrearViaje"><br>
+
+            </div>
+            <!-- Rollover de carga -->
+            <div id="seccionRolloverDeCarga" class="seccion">
+                <h3>Rollover de carga</h3>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID carga</th>
+                            <th>Tipo de mercaderia</th>
+                            <th>Descripcion de la mercaderia</th>
+                            <th>Puerto de origen</th>
+                            <th>Cantidad de contenedores</th>
+                            <th>ID importador</th>
+                            <th>Estado carga</th>
+                            <th>ID buque actual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblRollover"></tbody>
+                </table>
+                <br>
+                <label for="txtIdCarga">ID carga:</label>
+                <input type="number" id="txtIdCarga">
+                <br>
+                <label for="slcViajesDestino">Seleccione un viaje:</label>
+                <select id="slcViajesDestino"></select><br>
+                <input type="button" value="Rollear carga" id="btnRollearCarga">
+            </div>
+
+            <!-- Manifiesto de carga -->
+
+            <div id="seccionManifiestoDeCarga" class="seccion">
+                <h3>Manifiesto de carga</h3>
+                <label for="slcViajesManifiesto">Seleccione un viaje:</label>
+                <select id="slcViajesManifiesto"></select><br>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Origen</th>
+                            <th>Cantidad de contenedores</th>
+                            <th>Importador</th>
+                            <th>Descripcion</th>
+                            <th>Tipo de mercaderia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblManifiestoDeCarga"></tbody>
+                </table>
+                <input type="button" value="Emitir listado" id="btnListado">
+            </div>
+
+            <!-- Habilitar importadores -->
+            <div id="seccionHabilitarImportadores" class="seccion">
+                <h3>Habilitar importadores</h3>
+
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID importador</th>
+                            <th>Nombre</th>
+                            <th>Habilitar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblHabilitarImportadores"></tbody>
+                </table>
+            </div>
+
+            <!-- Listar carga peligrosa -->
+            <div id="seccionListarCargaPeligrosa" class="seccion">
+                <h3>Listar carga peligrosa</h3>
+
+
+                <label for="slcViajesPeligrosos">Seleccione un viaje:</label>
+                <select id="slcViajesPeligrosos"></select><br>
+                <input type="button" value="Listar" id="btnListarCargaPeligrosa">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID importador</th>
+                            <th>Cantidad de contenedores</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblListadoCargaPeligrosa"></tbody>
+                </table>
+                </table>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="seccionListar" class="seccion">
+                <!-- <input type="button" value="Listar" id="btnListar">
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Fecha</th>
+                  <th>Promedio</th>
+                </tr>
+              </thead>
+              <tbody id="tblPeliculas"></tbody>
+            </table> -->
+            </div>
+
+            <div id="seccionBuscar" class="seccion">
+                <!-- <label for="txtBusqueda">Busqueda:</label>
+            <input type="text" id="txtBusqueda"><br>
+      
+            <input type="button" value="Buscar" id="btnBuscar">
+      
+            <p id="pPelicula"></p> -->
+            </div>
+            <div id="seccionX" class="seccion">
+                <!-- <h1>Sección nueva</h1> -->
+            </div>
+        </div><!-- FIN CONTENIDO -->
+        <div id="pie">
+            <!-- <a href="https://www.ort.edu.uy">Footer</a> -->
+        </div><!-- FIN PIE -->
+    </div><!-- FIN CONTENEDOR -->
+
+
+
+
+
+
+    <script src="js/codigo.js"></script>
+
+
+
+</body>
+
+</html>
